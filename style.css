@@ -1,0 +1,177 @@
+/* usando as fontes já instaladas */
+@font-face {
+    font-family: 'YoungSerif';
+    src: url('assets/fonts/young-serif/YoungSerif-Regular.ttf') format('opentype'); 
+}
+
+@font-face {
+    font-family: 'Outfit-Light';
+    src: url('assets/fonts/outfit/static/Outfit-Light.ttf') format('opentype'); 
+} 
+
+@font-face {
+    font-family: 'Outfit-Bold';
+    src: url('assets/fonts/outfit/static/Outfit-Bold.ttf') format('opentype'); 
+} 
+
+
+/* nomeando as cores e fontes para usar durante o codigo */
+:root {
+    --cor00: #FFFFFF;
+    --cor01: #F3E5D8;
+    --cor02: #5E293F;
+    --cor03: #FFF7FC;
+    --cor04: #7D4A3A;
+
+    --fonte-titulo: 'YoungSerif';
+    --fonte-corpo: 'Outfit-Light';
+    --fonte-corpo-bold: 'Outfit-Bold';
+} 
+
+
+body {
+    background-color: var(--cor01);
+}
+
+main {
+    background-color: var(--cor00);
+    min-width: none;
+    max-width: 50%;
+    margin: auto;
+    padding: 50px;
+    border-radius: 30px;
+    font-family: var(--fonte-corpo);
+}
+
+main h1, h2, h3 {
+    font-family: var(--fonte-titulo);
+}
+
+main img {
+    width: 100%;
+    border-radius: 20px;
+}
+
+
+/* estilizando a div de tempo de preparacao */
+#preparation-time {
+    background-color: var(--cor03);
+    padding: 15px;
+    border-radius: 20px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+#preparation-time h3 {
+    font-family: var(--fonte-corpo-bold);
+    color: var(--cor02);
+}
+
+
+/* estilizando todos os h2 do texto */
+h2 {
+    color: var(--cor04);
+    font-weight: 500;
+    font-size: 27px;
+}
+
+
+/* estilizando as listas desordenadas (tempo de preparacao e ingredientes), preparando para colocar o ponto com uma cor diferente */
+ul li {
+    list-style-type: none; /* Remove o estilo padrão do marcador de lista dos itens de lista. Isso significa que os itens de lista não terão mais o marcador (como pontos, números, etc.).*/
+    position: relative; /*Define a posição dos itens de lista como relativa. Isso é importante quando usamos posicionamento absoluto nos pseudoelementos ::before ou ::after, pois eles serão posicionados relativamente ao elemento pai que tem posicionamento relativo.*/
+    margin-bottom: 0.5em;
+}
+
+ul li:before {
+    content: '•';
+    display: inline-block; /* Define o pseudoelemento como um bloco inline. Isso permite que ele seja posicionado corretamente ao lado do texto dos itens de lista.*/
+    position: absolute; /*Define o posicionamento do pseudoelemento como absoluto. Isso faz com que o ponto seja posicionado em relação ao elemento pai que tem position: relative definido.*/
+    left: -1.5em;
+}
+
+
+/*mudando a cor das listas desordenadas*/
+#preparation-time li:before {
+    color: var(--cor02);
+}
+
+#ingredients li:before {
+    color: var(--cor04);
+}
+
+
+/* fazendo a linha de separação */
+.separator {
+    border-bottom: 1px solid #ccc; /* Borda sólida de 2px com cor cinza */
+    margin-bottom: 35px;
+}
+
+
+/* colocando margem em baixo da div pra linha */
+#instructions, #ingredients {
+    margin-bottom: 35px;
+} 
+
+
+/* estilizando a lista ordenada (instrucoes), preparando para colocar os numeros com uma cor diferente */
+#instructions ol {
+    list-style-type: none; /* Remove o estilo padrão dos números */
+    counter-reset: item; /* Reinicia o contador para os números da lista */
+    padding-left: 3px; /* Remove o recuo padrão da lista, deixando so um pouco pra direita*/
+}
+
+#instructions ol li {
+    counter-increment: item; /* Incrementa o contador para cada item */
+    margin-bottom: 0.5em; /* Espaço entre os itens da lista */
+    position: relative; /* Posicionamento relativo para os pseudo-elementos */
+}
+
+#instructions ol li::before {
+    content: counter(item) "."; /* Usa o valor do contador seguido de ponto (1.) */
+    color: var(--cor04); /* Cor dos números da lista */
+    font-weight: bold; /* Negrito nos números da lista */
+    margin-right: 1.1em; /* Espaçamento à direita dos números */
+}
+
+
+/* estilizando a tabela */
+table {
+    border-collapse: collapse; /*  Esta propriedade CSS define como as bordas da tabela devem ser tratadas. Com collapse, as bordas das células se fundem em uma única borda quando possível, resultando em uma aparência mais limpa e organizada. */
+    width: 100%; /*  Define que a largura da tabela deve ser 100% da largura do elemento pai. Isso fará com que a tabela ocupe toda a largura disponível, entao as duas colunas vao para o meio. */
+}
+  
+th, td {
+    padding: 13px;
+    text-align: left; /* com as duas colunas no meio, ele alinha o texto à esquerda */
+    border-bottom: 1px solid #ccc; /* Borda sólida de 2px com cor cinza */
+}
+  
+th {
+    font-weight: lighter;
+}
+
+td {
+    font-family: var(--fonte-corpo-bold);
+    color: var(--cor04);
+}
+
+
+
+
+footer {
+    background-color: var(--cor03);
+    color: rgb(24, 24, 24);
+    text-align: center;
+    font-family: var(--fonte-corpo);
+    font-size: 0.9em;
+    padding: 7px;
+    margin-top: 5%;
+}
+
+footer a {
+    color: #5E293F;
+    font-weight: bolder;
+    text-decoration: none;
+    font-family: var(--fonte-corpo-bold);
+}
